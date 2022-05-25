@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.15/marked.min.js" integrity="sha512-VPdTATEqYWxDgVwJtoSSA/OSa0RReaQexL/3d8WX3CAV4xu83OjMmfI++NMA/cUhx+WC3dth10CJcBDxPX8Shg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+      
+    <script>   
+    function updatePreview (){
+        let previewElement = document.getElementById("preview");
+        let editorValue = document.getElementById("editor").value;
+        let markedUpHTML = marked.parse(editorValue);
+        previewElement.innerHTML = markedUpHTML
+    }
+    
+    function setDefault(){
+        let textDefault =`# H1
+
+## H2
+
+[link](#)
+
+\`codeLine\`
+\`\`\`
+{
+          "direction": "withdrawal",
+          "txn": "",
+          "address": "1JWF1vJyyxxWJ27T9G3kStyFUGp47hvKiP",
+          "currency": "BTC"
+         }
+\`\`\`
+* Asterisks 1
+* Asterisks 2
+* Asterisks 3
+
+>> I am a quote
+
+![Duck](http://i.stack.imgur.com/ukC2U.jpg)
+
+**Bolded Text**
+`
+        let editorDefault = document.getElementById("editor");
+        editorDefault.value = textDefault
+    }
+      </script>
+  </head>
+  <body onload="setDefault()">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col text-center">
+                  <h1>Markdown Previewer</h1>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-6">
+                  <p>Editor section</p>
+                  <textarea id="editor" onkeyup="updatePreview()" ></textarea>
+              </div>
+              <div class="col-6">
+                  <p>Preview section</p>
+                  <div id="preview">preview</div>
+              </div>
+          </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+      <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+  </body>
+</html>

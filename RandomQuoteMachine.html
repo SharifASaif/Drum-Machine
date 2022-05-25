@@ -1,0 +1,61 @@
+<html>
+  <head> 
+      <script>
+          const QUOTEBANK = [
+              {
+                  quote :"The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion",
+                  author:"Albert Camus"
+              },
+              {
+                  quote :"Between stimulus and response there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom.",
+                  author:"Viktor E. Frankl"
+              },
+              {
+                  quote :"I would like to die on Mars. Just not on impact.",
+                  author:"Elon Musk"
+              },
+          ]
+          window.onload =init;
+          function init(){
+              generateQuote()
+          }
+          
+          function generateQuote() {
+              let quoteSize = QUOTEBANK.length;
+              let randomIndex = Math.floor(Math.random () * quoteSize);
+              let randomQuoteDate = QUOTEBANK[randomIndex];
+              
+              let twitterButton = "https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=";
+              
+              
+              let quoteInApiFormat = randomQuoteDate.quote.replace(/ /g, "%20");
+              let authorInApiFormat = randomQuoteDate.author.replace(/ /g, "%20");
+              
+              twitterButton += quoteInApiFormat
+              twitterButton += authorInApiFormat
+              
+              
+              
+              document.getElementById("tweet-quote").href = twitterButton;
+              document.getElementById("text").innerText = randomQuoteDate.quote;
+              document.getElementById("author").innerText = randomQuoteDate.author;
+          }
+      </script>
+      <style>
+          *{
+              font-size: 1.5rem;
+              margin: 20px 20px 20px 20px;
+              text-align: center
+          }
+      </style>
+  </head>
+  <body>
+      <wrapper id="quote-box">
+          <div id="text"></div>
+          <div id="author"></div>
+          <button id="new-quote" onClick="generateQuote()">New Quote</button>
+          <a id="tweet-quote"  target="_blank"  href="">Tweet Quote</a>
+      </wrapper>    
+      <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
